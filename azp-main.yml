@@ -11,11 +11,11 @@ pr:
       - main
 
 stages:
-- stage: Checkout
+- stage: CheckoutStage
 
   displayName: 'Checkout and analysis'
   jobs:
-  - job: Checkout
+  - job: CheckoutJob
     pool:
       vmImage: ubuntu-latest
     steps:
@@ -38,10 +38,10 @@ stages:
 
 - stage: UserSync_DeployStage
   dependsOn: Checkout
-  # condition: eq(stageDependencies.Checkout.Checkout.outputs['find_changed_areas.UserSyncChanged'], true)
   displayName: 'Sync: Stage deploy'
   jobs:
   - job: 'Deploy'
+    condition: eq(stageDependencies.CheckoutStage.CheckoutJob.outputs['find_changed_areas.UserSyncChanged'], true)
     pool:
       vmImage: ubuntu-latest
     steps:
