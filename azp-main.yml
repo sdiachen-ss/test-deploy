@@ -15,7 +15,7 @@ stages:
 
   displayName: 'Checkout and analysis'
   jobs:
-  - job: 'Checkout'
+  - job: Checkout
     pool:
       vmImage: ubuntu-latest
     steps:
@@ -23,7 +23,14 @@ stages:
 
     - script: echo Checkout
 
+    - script: |
+        echo ##vso[task.setvariable variable=UserSyncChanged;isOutput=true;]True
+      displayName: Set changed Files
+      name: find_changed_areas
+
 - stage: UserSync_DeployStage
+  dependsOn: Checkout
+  condition: eq(stageDependencies.Checkout.Checkout.outputs['find_changed_areas.UserSyncChanged'], true)
   displayName: 'Sync: Stage deploy'
   jobs:
   - job: 'Deploy'
