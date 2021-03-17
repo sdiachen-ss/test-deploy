@@ -16,8 +16,18 @@ stages:
   displayName: 'Checkout and analysis'
   jobs:
   - job: 'Checkout'
+    pool:
+      vmImage: ubuntu-latest
     steps:
     - checkout: self
 
     - script: echo Checkout
 
+- stage: UserSync_DeployStage
+  displayName: 'Sync: Stage deploy'
+  jobs:
+  - job: 'Deploy'
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+    - script: echo Deployed

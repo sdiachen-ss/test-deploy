@@ -3,7 +3,7 @@ name: User Sync Production Deploy Pipeline
 resources:
   pipelines:
   - pipeline: PowerDMS
-    source: PowerDMS.PowerDMS
+    source: sdiachen-ss.test-deploy
     trigger:
       branches:
         include:
@@ -18,7 +18,7 @@ pr: none
 stages:
 - stage: UserSync_DeployProd
   displayName: "Sync: Prod Deploy"
-  condition: and(succeeded(), eq(variables['build.sourceBranch'], 'refs/heads/develop'))
+  condition: and(succeeded(), eq(variables['build.sourceBranch'], 'refs/heads/main'))
   jobs:
   - job: DeployToProd
     displayName: Prod Deploy
