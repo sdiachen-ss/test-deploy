@@ -29,7 +29,12 @@ stages:
       name: find_changed_areas
 
     - bash: |
-        echo UserSyncChanged: $(UserSyncChanged)
+        echo UserSyncChanged: 
+        echo $(UserSyncChanged)
+
+    - bash: |
+        echo find_changed_areas.UserSyncChanged: 
+        echo $(find_changed_areas.UserSyncChanged)
 
 - stage: UserSync_DeployStage
   dependsOn: Checkout
