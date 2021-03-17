@@ -2,12 +2,12 @@ name: User Sync Production Deploy Pipeline
 
 resources:
   pipelines:
-  - pipeline: PowerDMS
+  - pipeline: sdiachen-ss
     source: sdiachen-ss.test-deploy
     trigger:
       branches:
         include:
-        - develop
+        - main
       stages:
       - UserSync_DeployStage
 
