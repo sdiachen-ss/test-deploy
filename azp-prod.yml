@@ -2,7 +2,7 @@ name: User Sync Production Deploy Pipeline
 
 resources:
   pipelines:
-  - pipeline: sdiachen-ss
+  - pipeline: sdiachen
     source: sdiachen-ss.test-deploy
     trigger:
       branches:
