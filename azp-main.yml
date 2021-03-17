@@ -37,7 +37,7 @@ stages:
         echo $(find_changed_areas.UserSyncChanged)
 
 - stage: UserSync_DeployStage
-  dependsOn: Checkout
+  dependsOn: CheckoutStage
   displayName: 'Sync: Stage deploy'
   jobs:
   - job: 'Deploy'
