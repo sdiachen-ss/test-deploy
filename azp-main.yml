@@ -28,6 +28,9 @@ stages:
       displayName: Set changed Files
       name: find_changed_areas
 
+    - script: |
+        echo 'UserSyncChanged: $(UserSyncChanged)'
+
 - stage: UserSync_DeployStage
   dependsOn: Checkout
   condition: eq(stageDependencies.Checkout.Checkout.outputs['find_changed_areas.UserSyncChanged'], true)
