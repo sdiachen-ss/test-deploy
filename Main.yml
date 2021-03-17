@@ -1,0 +1,23 @@
+name: Mono repo
+
+trigger:
+  branches:
+    include:
+      - main
+
+pr:
+  branches:
+    include:
+      - main
+
+stages:
+- stage: Checkout
+
+  displayName: 'Checkout and analysis'
+  jobs:
+  - job: 'Checkout'
+    steps:
+    - checkout: self
+
+    - script: echo Checkout
+
