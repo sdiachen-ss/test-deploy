@@ -1,0 +1,31 @@
+name: User Sync Production Deploy Pipeline
+
+resources:
+  pipelines:
+  - pipeline: PowerDMS
+    source: PowerDMS.PowerDMS
+    trigger:
+      branches:
+        include:
+        - develop
+      stages:
+      - UserSync_DeployStage
+
+trigger: none
+
+pr: none
+
+stages:
+- stage: UserSync_DeployProd
+  displayName: "Sync: Prod Deploy"
+  condition: and(succeeded(), eq(variables['build.sourceBranch'], 'refs/heads/develop'))
+  jobs:
+  - job: DeployToProd
+    displayName: Prod Deploy
+    timeoutInMinutes: 10
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+    - checkout: self      
+
+    - script: echo "Prod Deploy"
