@@ -38,7 +38,7 @@ stages:
 
 - stage: UserSync_DeployStage
   dependsOn: Checkout
-  condition: eq(stageDependencies.Checkout.Checkout.outputs['find_changed_areas.UserSyncChanged'], true)
+  # condition: eq(stageDependencies.Checkout.Checkout.outputs['find_changed_areas.UserSyncChanged'], true)
   displayName: 'Sync: Stage deploy'
   jobs:
   - job: 'Deploy'
