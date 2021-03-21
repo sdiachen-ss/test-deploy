@@ -26,6 +26,10 @@ stages:
     - download: sdiachen
       artifact: changed_areas
 
+    - script: |
+        pwd
+        ls
+
     - script: cat sdiachen/changed_areas/changes.env
 
     - checkout: self      
