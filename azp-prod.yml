@@ -33,7 +33,7 @@ stages:
     - script: cat ../sdiachen/changed_areas/changes.env
 
     - checkout: self
-      condition: eq($(UserSyncChanged), true)     
+      condition: eq(variables['UserSyncChanged'], true)     
 
     - script: echo "Prod Deploy"
-      condition: eq($(UserSyncChanged), true) 
+      condition: eq(variables['UserSyncChanged'], true)   
