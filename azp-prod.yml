@@ -30,7 +30,7 @@ stages:
         pwd
         ls
 
-    - script: cat sdiachen/changed_areas/changes.env
+    - script: cat ../sdiachen/changed_areas/changes.env
 
     - checkout: self      
 
