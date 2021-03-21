@@ -32,6 +32,8 @@ stages:
 
     - script: cat ../sdiachen/changed_areas/changes.env
 
-    - checkout: self      
+    - checkout: self
+      condition: eq($(UserSyncChanged), true)     
 
     - script: echo "Prod Deploy"
+      condition: eq($(UserSyncChanged), true) 
