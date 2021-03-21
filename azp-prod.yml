@@ -23,6 +23,12 @@ stages:
     pool:
       vmImage: ubuntu-latest
     steps:
+    - download: sdiachen
+      artifact: changed_areas
+      downloadPath: '$(System.ArtifactsDirectory)'
+
+    - script: cat $(System.ArtifactsDirectory)/changed_areas/changes.env
+
     - checkout: self      
 
     - script: echo "Prod Deploy"
