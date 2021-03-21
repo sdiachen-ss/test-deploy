@@ -38,7 +38,7 @@ stages:
         echo $(find_changed_areas.AnalyticsSpaChanged)
 
     - pwsh: |
-        echo "# Env file for passing data" > $(Build.ArtifactStagingDirectory)/changed_areas/changes.env
+        echo "# Env file for passing data" | Out-File -FilePath $(Build.ArtifactStagingDirectory)/changed_areas/changes.env
         echo "##vso[task.setvariable variable=UserSyncChanged;]$(find_changed_areas.UserSyncChanged)" | Out-File -FilePath $(Build.ArtifactStagingDirectory)/changed_areas/changes.env -Append
         echo "##vso[task.setvariable variable=AnalyticsSpaChanged;]$(find_changed_areas.AnalyticsSpaChanged)" | Out-File -FilePath $(Build.ArtifactStagingDirectory)/changed_areas/changes.env -Append
 
