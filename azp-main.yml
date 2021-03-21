@@ -24,7 +24,7 @@ stages:
     - script: echo Checkout
 
     - bash: |
-        echo '##vso[task.setvariable variable=UserSyncChanged;isOutput=true;]False'
+        echo '##vso[task.setvariable variable=UserSyncChanged;isOutput=true;]True'
         echo '##vso[task.setvariable variable=AnalyticsSpaChanged;isOutput=true;]True'
       displayName: Set changed Files
       name: find_changed_areas
